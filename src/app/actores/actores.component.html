@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" style="background-color: pink">
+      <!-- Componente ListadoActores -->
+      <app-listado-actores
+        (actorSeleccionado)="onActorSeleccionado($event)"
+      ></app-listado-actores>
+    </div>
+    <div class="col-md-4" style="background-color: yellow">
+      <!-- Componente DetalleActor -->
+      <app-detalle-actor [actor]="actorSeleccionado"></app-detalle-actor>
+    </div>
+    <div class="col-md-4" style="background-color: red">
+      <!-- Componente DetallePais -->
+      <app-detalle-pais [pais]="paisSeleccionado"></app-detalle-pais>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col" style="background-color: blue">
+      <!-- Componente PeliculasActor -->
+      <app-peliculas-actor [actor]="actorSeleccionado"></app-peliculas-actor>
+    </div>
+  </div>
+</div>

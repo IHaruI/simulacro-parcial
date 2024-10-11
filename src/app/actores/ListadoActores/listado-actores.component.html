@@ -1,0 +1,10 @@
+<h3>Listado de Actores</h3>
+<ul class="list-group">
+  <li
+    *ngFor="let actor of actores"
+    class="list-group-item"
+    (click)="seleccionarActor(actor)"
+  >
+    {{ actor.nombre }} {{ actor.apellido }}
+  </li>
+</ul>

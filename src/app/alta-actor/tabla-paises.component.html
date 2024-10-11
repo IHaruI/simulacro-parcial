@@ -1,0 +1,12 @@
+<div class="bg-success text-white p-4 mb-4">
+  <h3>Listado de Países</h3>
+  <ul class="list-group">
+    <li
+      *ngFor="let pais of paises"
+      class="list-group-item list-group-item-action"
+      (click)="seleccionarPais(pais)"
+    >
+      {{ pais }}
+    </li>
+  </ul>
+</div>

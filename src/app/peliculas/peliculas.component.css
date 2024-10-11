@@ -1,0 +1,22 @@
+/* peliculas.component.css */
+
+.jumbotron {
+  background-color: #f8f9fa; /* Color de fondo para el jumbotron */
+}
+
+.bg-success {
+  border-radius: 10px; /* Bordes redondeados para el componente */
+}
+
+.bg-danger {
+  border-radius: 10px; /* Bordes redondeados para el componente */
+}
+
+.bg-primary {
+  border-radius: 10px; /* Bordes redondeados para el componente */
+}
+
+.pelicula-imagen {
+  width: 100%; /* Asegúrate de que las imágenes se adapten al contenedor */
+  height: auto; /* Mantener la relación de aspecto */
+}

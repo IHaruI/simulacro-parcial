@@ -1,0 +1,121 @@
+<div class="container">
+  <main>
+    <div class="row g-5">
+      <div class="col-md-7 col-lg-8">
+        <div class="bg-danger text-white p-4">
+          <h3>Alta de Película</h3>
+
+          <div class="form-group mb-3">
+            <label for="nombre">Nombre</label>
+            <input
+              type="text"
+              id="nombre"
+              [formControl]="nombre"
+              class="form-control"
+            />
+            <div
+              *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+              class="text-warning"
+            >
+              <small *ngIf="nombre.errors?.['required']"
+                >El nombre es requerido.</small
+              >
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="tipo">Tipo</label>
+            <select id="tipo" [formControl]="tipo" class="form-control">
+              <option value="terror">Terror</option>
+              <option value="comedia">Comedia</option>
+              <option value="amor">Amor</option>
+              <option value="otros">Otros</option>
+            </select>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="fecha">Fecha de Estreno</label>
+            <input
+              type="date"
+              id="fecha"
+              [formControl]="fecha"
+              class="form-control"
+            />
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="cantidadPublico">Cantidad de Público</label>
+            <input
+              type="number"
+              id="cantidadPublico"
+              [formControl]="cantidadPublico"
+              class="form-control"
+            />
+            <div
+              *ngIf="
+                cantidadPublico.invalid &&
+                (cantidadPublico.dirty || cantidadPublico.touched)
+              "
+              class="text-warning"
+            >
+              <small *ngIf="cantidadPublico.errors?.['required']"
+                >La cantidad de público es requerida.</small
+              >
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="foto">Foto de la Película</label>
+            <input
+              type="file"
+              id="foto"
+              (change)="onFileSelected($event)"
+              class="form-control"
+            />
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="protagonista">Protagonista</label>
+            <input
+              type="text"
+              id="protagonista"
+              [formControl]="protagonista"
+              class="form-control"
+              [value]="protagonistaSeleccionado"
+              readonly
+            />
+          </div>
+
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="guardarPelicula()"
+            [disabled]="!esFormularioValido()"
+          >
+            Guardar Película
+          </button>
+
+          <div *ngIf="peliculas.length > 0" class="mt-4">
+            <h4>Listado de Películas</h4>
+            <ul>
+              <li *ngFor="let pelicula of peliculas">
+                {{ pelicula.nombre }} - {{ pelicula.tipo }} -
+                {{ pelicula.fechaEstreno }} - Protagonista:
+                {{ pelicula.protagonista }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5 col-lg-4">
+        <div class="bg-success text-white p-4">
+          <h3>Tabla de Actores</h3>
+          <app-tabla-actores
+            (actorSeleccionado)="recibirActorSeleccionado($event)"
+          ></app-tabla-actores>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

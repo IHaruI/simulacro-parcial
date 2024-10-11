@@ -1,0 +1,24 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px; /* Espacio entre los elementos */
+  padding: 16px; /* Espacio alrededor del contenedor */
+}
+
+.grid-item {
+  border: 1px solid #ccc; /* Borde de cada cuadro */
+  border-radius: 8px; /* Bordes redondeados */
+  text-align: center; /* Centrar el texto */
+  padding: 8px; /* Espacio interior */
+  transition: transform 0.2s; /* Efecto de transformación suave */
+}
+
+.grid-item:hover {
+  transform: scale(1.05); /* Escalar ligeramente al pasar el mouse */
+}
+
+.pelicula-imagen {
+  width: 100%; /* Imagen ocupa todo el ancho del cuadro */
+  height: auto; /* Mantener la proporción de la imagen */
+  border-radius: 8px; /* Bordes redondeados para la imagen */
+}

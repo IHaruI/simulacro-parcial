@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <!-- Jumbotron -->
+  <div class="jumbotron text-center">
+    <h1 class="display-4">Listado de Películas</h1>
+    <p class="lead">
+      Aquí puedes ver todas las películas disponibles en el sistema.
+    </p>
+  </div>
+
+  <!-- Componente TablaPeliculas (rojo) -->
+  <div class="bg-danger text-white p-4 mb-4">
+    <h3>Componente Tabla Películas</h3>
+    <app-tabla-peliculas
+      (peliculaSeleccionada)="onPeliculaSeleccionada($event)"
+    >
+    </app-tabla-peliculas>
+  </div>
+
+  <!-- Componente DetallePelicula (azul) -->
+  <div class="bg-primary text-white p-4 mb-4">
+    <h3>Detalle de la Película</h3>
+    <div *ngIf="peliculaSeleccionada">
+      <p>ID: {{ peliculaSeleccionada.id }}</p>
+      <p>Nombre: {{ peliculaSeleccionada.nombre }}</p>
+      <p>Tipo: {{ peliculaSeleccionada.tipo }}</p>
+      <p>Fecha de Estreno: {{ peliculaSeleccionada.fechaEstreno | date }}</p>
+      <p>Cantidad de Público: {{ peliculaSeleccionada.cantidadPublico }}</p>
+      <p>Protagonista: {{ peliculaSeleccionada.protagonista }}</p>
+      <img
+        [src]="peliculaSeleccionada.foto"
+        alt="{{ peliculaSeleccionada.nombre }}"
+        class="img-fluid"
+      />
+    </div>
+  </div>
+</div>

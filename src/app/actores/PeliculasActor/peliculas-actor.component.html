@@ -1,0 +1,20 @@
+<h3>Películas del Actor</h3>
+<ul class="list-group">
+  <li *ngFor="let pelicula of peliculas" class="list-group-item">
+    <p><strong>Nombre:</strong> {{ pelicula.nombre }}</p>
+    <p><strong>Tipo:</strong> {{ pelicula.tipo }}</p>
+    <p>
+      <strong>Fecha de Estreno:</strong>
+      {{ pelicula.fechaEstreno | date : "longDate" }}
+    </p>
+    <p><strong>Cantidad de Público:</strong> {{ pelicula.cantidadPublico }}</p>
+    <p><strong>Protagonista:</strong> {{ pelicula.protagonista }}</p>
+    <!-- Mostrar la imagen de la película -->
+    <img
+      *ngIf="pelicula.foto"
+      [src]="pelicula.foto"
+      alt="{{ pelicula.nombre }}"
+      class="img-fluid mt-2"
+    />
+  </li>
+</ul>

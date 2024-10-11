@@ -1,0 +1,149 @@
+<div class="container">
+  <main>
+    <div class="row g-5">
+      <div class="col-md-7 col-lg-8">
+        <div class="bg-danger text-white p-4">
+          <h3>Alta de Actor</h3>
+          <div class="form-group mb-3">
+            <label for="nombre">Nombre</label>
+            <input
+              type="text"
+              id="nombre"
+              [formControl]="nombre"
+              class="form-control"
+            />
+            <div
+              *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)"
+              class="text-warning"
+            >
+              <small *ngIf="nombre.errors?.['required']"
+                >El nombre es requerido.</small
+              >
+              <small *ngIf="nombre.errors?.['minlength']"
+                >El nombre debe tener al menos 3 caracteres.</small
+              >
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="apellido">Apellido</label>
+            <input
+              type="text"
+              id="apellido"
+              [formControl]="apellido"
+              class="form-control"
+            />
+            <div
+              *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)"
+              class="text-warning"
+            >
+              <small *ngIf="apellido.errors?.['required']"
+                >El apellido es requerido.</small
+              >
+              <small *ngIf="apellido.errors?.['minlength']"
+                >El apellido debe tener al menos 3 caracteres.</small
+              >
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="documento">Documento</label>
+            <input
+              type="text"
+              id="documento"
+              [formControl]="documento"
+              class="form-control"
+            />
+            <div
+              *ngIf="
+                documento.invalid && (documento.dirty || documento.touched)
+              "
+              class="text-warning"
+            >
+              <small *ngIf="documento.errors?.['required']"
+                >El documento es requerido.</small
+              >
+              <small *ngIf="documento.errors?.['pattern']"
+                >El documento debe contener solo números.</small
+              >
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="edad">Edad</label>
+            <input
+              type="number"
+              id="edad"
+              [formControl]="edad"
+              class="form-control"
+            />
+            <div
+              *ngIf="edad.invalid && (edad.dirty || edad.touched)"
+              class="text-warning"
+            >
+              <small *ngIf="edad.errors?.['required']"
+                >La edad es requerida.</small
+              >
+              <small *ngIf="edad.errors?.['min']"
+                >Debe ser mayor de 18 años.</small
+              >
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="pais">País</label>
+            <input
+              type="text"
+              id="pais"
+              [formControl]="pais"
+              class="form-control"
+              [value]="paisSeleccionado"
+              readonly
+            />
+            <div
+              *ngIf="pais.invalid && (pais.dirty || pais.touched)"
+              class="text-warning"
+            >
+              <small *ngIf="pais.errors?.['required']"
+                >El país es requerido.</small
+              >
+            </div>
+          </div>
+
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="guardarActor()"
+            [disabled]="
+              nombre.invalid ||
+              apellido.invalid ||
+              documento.invalid ||
+              edad.invalid ||
+              pais.invalid
+            "
+          >
+            Guardar Actor
+          </button>
+
+          <div *ngIf="actores.length > 0" class="mt-4">
+            <h4>Listado de Actores</h4>
+            <ul>
+              <li *ngFor="let actor of actores">
+                {{ actor.nombre }} {{ actor.apellido }} - {{ actor.pais }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5 col-lg-4">
+        <div class="bg-success text-white p-4">
+          <h3>Tabla de Países</h3>
+          <app-tabla-paises
+            (paisSeleccionado)="recibirPaisSeleccionado($event)"
+          ></app-tabla-paises>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
