@@ -9,7 +9,7 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideHttpClient(), // Agrega el servicio HttpClient aquí
+    provideHttpClient(),
     ...appConfig.providers,
     provideFirebaseApp(() =>
       initializeApp({
